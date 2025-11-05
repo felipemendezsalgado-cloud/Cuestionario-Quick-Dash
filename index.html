@@ -247,7 +247,7 @@
 
             if (answeredQuestions > 0) {
                 const oldResult = ((totalScore / answeredQuestions) - 1) * 25;
-                const functionalIndex = (100 - oldResult) * -1;
+                const functionalIndex = 100 - oldResult;
                 document.getElementById('result').textContent = functionalIndex.toFixed(2);
             } else {
                 document.getElementById('result').textContent = '--';
