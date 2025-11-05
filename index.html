@@ -216,6 +216,7 @@
     </div>
     <p>El índice de funcionalidad va de 0 (ninguna discapacidad) a 100 (discapacidad severa).</p>
 
+    <button type="button" id="calculateBtn" style="margin-bottom: 20px;">Calcular resultado</button>
 
     <div class="export-buttons">
         <button id="exportPdf">Exportar como PDF</button>
@@ -227,7 +228,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <script>
-        document.getElementById('disabilityForm').addEventListener('change', calculateScore);
+        document.getElementById('calculateBtn').addEventListener('click', calculateScore);
         document.getElementById('exportPdf').addEventListener('click', exportAsPdf);
         document.getElementById('exportExcel').addEventListener('click', exportAsExcel);
 
@@ -245,7 +246,8 @@
             }
 
             if (answeredQuestions > 0) {
-                const functionalIndex = ((totalScore / answeredQuestions) - 1) * 25;
+                const oldResult = ((totalScore / answeredQuestions) - 1) * 25;
+                const functionalIndex = (100 - oldResult) * -1;
                 document.getElementById('result').textContent = functionalIndex.toFixed(2);
             } else {
                 document.getElementById('result').textContent = '--';
